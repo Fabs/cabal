@@ -446,7 +446,7 @@ globalCommand commands = CommandUI {
          globalWorldFile (\v flags -> flags { globalWorldFile = v })
          (reqArgFlag "FILE")
 
-      ,option [] ["store-dir"]
+      ,option [] ["storedir", "store-dir"]
          "The location of the nix-local-build store"
          globalStoreDir (\v flags -> flags { globalStoreDir = v })
          (reqArgFlag "DIR")
@@ -468,7 +468,7 @@ configureCommand = c
       ++ "including v1-build, v1-test, v1-bench, v1-run, v1-repl.\n"
   , commandUsage        = \pname ->
     "Usage: " ++ pname ++ " v1-configure [FLAGS]\n"
-  , commandNotes = Just $ \pname -> 
+  , commandNotes = Just $ \pname ->
     (Cabal.programFlagsDescription defaultProgramDb ++ "\n")
       ++ "Examples:\n"
       ++ "  " ++ pname ++ " v1-configure\n"
@@ -1293,9 +1293,9 @@ upgradeCommand = configureCommand {
   }
 
 cleanCommand :: CommandUI CleanFlags
-cleanCommand = Cabal.cleanCommand 
+cleanCommand = Cabal.cleanCommand
   { commandUsage = \pname ->
-    "Usage: " ++ pname ++ " v1-clean [FLAGS]\n" 
+    "Usage: " ++ pname ++ " v1-clean [FLAGS]\n"
   }
 
 checkCommand  :: CommandUI (Flag Verbosity)
